@@ -7,8 +7,44 @@ Harver Android Exercise
 Copy below code to https://repl.it/languages/kotlin and modify the code to complete the assesment tasks as below. Once you completed click on share to share a link to the assesment.
 
 ```
+import kotlinx.coroutines.*
 
+val words = arrayOf(
+"start", "citizen", "flour", "circle", "petty", "neck", "seem", "lake", "page",
+"color", "ceiling", "angle", "agent", "mild", "touch", "bite", "cause", "finance",
+"greet", "eat", "minor", "echo", "aviation", "baby", "role", "surround", "incapable",
+"refuse", "reliable", "imperial", "outer", "liability", "struggle", "harsh", "coerce",
+"front", "strike", "rage", "casualty", "artist", "ex", "transaction", "parking", "plug",
+"formulate", "press", "kettle", "export", "hiccup", "stem", "exception", "report", "central",
+"cancer", "volunteer", "professional", "teacher", "relax", "trip", "fountain", "effect",
+"news", "mark", "romantic", "policy", "contemporary", "conglomerate", "cotton", "happen",
+"contempt", "joystick", "champagne", "vegetation", "bat", "cylinder", "classify", "even",
+"surgeon", "slip", "private", "fox", "gravity", "aspect", "hypnothize", "generate",
+"miserable", "breakin", "love", "chest", "split", "coach", "pound", "sharp", "battery",
+"cheap", "corpse", "hobby", "mature", "attractive", "rock"
+)
 
+fun main(args: Array<String>) {
+    println(getRandomWordSync())
+}
+
+fun getRandomWordSync() : String {
+    val index = (0..99).random()
+    return words[index]
+}
+
+suspend fun getRandomWord(slow: Boolean = false): String {
+    val index = (0..199).random()
+    val word = if (index < words.size) {
+        words[index]
+    } else {
+        "Fatal: Index out of bounds"
+    }
+    
+    if (slow)
+    	delay(500)
+    return word
+}
 
 ```
 
